@@ -10,9 +10,18 @@ const dishSchema = new Schema({
     description: {
         type: String,
         required: true
-    }
+    }, 
+    comments:[commentSchema]
 }, {
     timestamps: true
+})
+
+var commentSchema = new Schema({
+    rating:{type: Number,min:1, max: 7, required: true},
+    comment:{type:String, required:true},
+    author:{type:String, required:true}
+}, {
+    timestamps:true
 })
 
 var Dishes = mongoose.model('Dish', dishSchema)
